@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'withoutloginheader.html' %}
+<div class="container my-5">
+  <h3 class="my-5">Signup Here</h3>
+  <form method="POST" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="username" class="form-label"><i class="bi bi-person"></i>  {{ form.username.label_tag }}</label>
+      {{ form.username }}
+      <div class="my-2" style="color: red; list-style: none">
+        {{ form.username.errors }}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label"><i class="bi bi-envelope"></i>  {{ form.email.label_tag }}</label>
+      {{ form.email }}
+      <div class="my-2"style="color: red;">
+        <i class="bi bi-exclamation-triangle"></i>  {{ form.email.errors }}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label"><i class="bi bi-key"></i>  {{ form.password.label_tag }}</label>
+      {{ form.password }}
+      <div class="my-2" style="color: red;">
+        {{ form.password.errors }}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-danger">Signup</button>
+  </form>
+  
+  <p class="my-4">
+    You have Already an Account! <span><a class="link-primary"href="/login/">Login Here</a></span>
+  </p>
+</div>
+{% endblock %}
